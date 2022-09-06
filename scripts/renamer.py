@@ -6,10 +6,10 @@ curr_dir = os.listdir()
 
 
 for file in curr_dir:
-	portions = file.split("?")
-	print(portions[0]) #presumably the portion of the original file we want (substring after splitting)
+	file_portions = file.split("?")
+	print(file_portions[0]) #presumably the portion of the original file we want (substring after splitting)
 	
 	# Renaming Operation, in-place w os
-	os.rename(i, t[0])
+	os.rename(file, file_portions[0])
 
 
