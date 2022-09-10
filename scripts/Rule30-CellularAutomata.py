@@ -45,7 +45,7 @@ print("starting vector: ", initial_state(12))
 
 
 print("\n\nRunning Rule 30:\n")
-applied_rule = apply_rule(50)
+applied_rule = apply_rule(25)
 #print(apply_rule(12))
 
 plt.imshow(applied_rule, cmap="hot")
