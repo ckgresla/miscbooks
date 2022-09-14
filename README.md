@@ -1,4 +1,4 @@
-# SpellBook
+# SpellBook ϟ
 
 What else would you name your personal repository of miscellaneous code & notebooks?
 
