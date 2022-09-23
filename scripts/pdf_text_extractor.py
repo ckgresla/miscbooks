@@ -6,6 +6,11 @@ import urllib.request
 
 
 
+# Issue w SSL Certs (if SSL acting fussy, can non-verify)
+import ssl
+#ssl._create_default_https_context = ssl._create_unverified_context
+
+
 # Get Pdfs from URLs & Delete after extracting Contents
 def pdf_extractor(url, file_name):
     # Get Raw PDF Data from Internet -- keep in temporary buffer
