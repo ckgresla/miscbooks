@@ -4,20 +4,30 @@ import PyPDF2
 import urllib.request
 
 
-
-
-# Issue w SSL Certs (if SSL acting fussy, can non-verify)
+# Issue w SSL Certs (popped up in UDE, not in alexandria)
 import ssl
-#ssl._create_default_https_context = ssl._create_unverified_context
+ssl._create_default_https_context = ssl._create_unverified_context
+
+# Create a Header
+header = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+       'Accept': 'text/html,application/pdf;q=0.9,*/*;q=0.8',
+       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+       'Accept-Encoding': 'none',
+       'Accept-Language': 'en-US,en;q=0.8',
+       'Connection': 'keep-alive'}
 
 
 # Get Pdfs from URLs & Delete after extracting Contents
 def pdf_extractor(url, file_name):
     # Get Raw PDF Data from Internet -- keep in temporary buffer
     print("Retrieving PDF Text from {}".format(url))
-    response = urllib.request.urlopen(url)
-    #file = open(file_name + ".pdf", "wb")
+
+    request = urllib.request.Request(url, None, headers=header)
+    # response = urllib.request.urlopen(url) #directly w URL
+    response = urllib.request.urlopen(request) #request w Custom Header
+
     file = open(file_name, "wb") #assuming ".pdf" will be in URL, that is logic for calling this library
+    #file = open(file_name + ".pdf", "wb")
     file.write(response.read())
     file.close()
 
@@ -40,7 +50,16 @@ def pdf_extractor(url, file_name):
 def extract_text(file_path):
     """Util to get text from PDF files in local dir, need request the file content from Web first"""
     pdf = open(file_path, "rb")
-    pdf_reader = PyPDF2.PdfFileReader(pdf)
+    try:
+        pdf_reader = PyPDF2.PdfFileReader(pdf)
+    except Exception as E:
+        print(f"Error in PDF Parsing: {E} -- trying again without Strict Mode")
+        try:
+            pdf_reader = PyPDF2.PdfFileReader(pdf, strict=False) #try again
+        except Exception as E:
+            print(f"2nd Error in PDF Parsing: {E} -- Exiting Text Extraction")
+            return None, None
+
     count_pages = pdf_reader.numPages
     doc_string = ""
 
@@ -71,3 +90,4 @@ if __name__ == "__main__":
     content, title = pdf_extractor(url, "tmp.pdf")
     print("title: ", title, "\n") #will return "NA" if there is no title in metadata of pdf (could still be a reasonable title though)
     print("content: ", content, "\n")
+
