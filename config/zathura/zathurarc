@@ -1,0 +1,28 @@
+# CKG's Zathura Config (MacOS)
+
+set selection-clipboard clipboard
+
+#set smooth-scroll "true" #no option for this on MacOS?
+set scroll-step 20
+
+set page-padding 1
+set font "Jetbrains Mono NL 12"
+set highlight-color "#B1C5FF"
+
+set statusbar-fg                    "#ffffff"
+set statusbar-bg                    "#000000"
+
+set inputbar-bg "#000000" #config bg for inputting commands
+set inputbar-fg "#B1C5FF" #color for text in input command prompt
+
+
+set recolor-lightcolor "#0A0A0A" #00
+#set recolor-lightcolor "#1e1d2f" #catpuccin version
+set recolor-darkcolor "#ffffff" #06
+
+
+#map p print #can print pdfs this way
+
+set guioptions sv
+
+
