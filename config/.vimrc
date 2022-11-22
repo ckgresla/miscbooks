@@ -11,6 +11,8 @@ set ignorecase "ignore casing on word search (could also use "ic" instead of "ig
 set smartindent "magic to smartly indent files
 
 
+
+
 "colorscheme peachpuff "disgusting on normal (somehow theme didn't set bg correctly before Ventura update)
 
 " Config Catppuccin Colors
@@ -130,4 +132,5 @@ let g:goyo_width="60%"
 
 call plug#end()
 " End PlugIn Section -- need call the end() func to get all loaded in
+
 
