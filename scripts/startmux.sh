@@ -4,6 +4,7 @@
 
 tmux new-session -d -s General # start session with 1st window
 tmux send-keys -t General 'tmux set status-style "bg=default"' Enter''
+tmux send-keys -t General 'tmux rename-window main' Enter''
 tmux send-keys -t General 'clear' Enter''
 
 tmux new-session -d -s  ssh #add ssh session
