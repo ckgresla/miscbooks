@@ -1,7 +1,12 @@
 #!/usr/bin/env python
 
-# Kalman Filters in Python
+"""
+Useful Resources:
+Blog Post- https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/#mathybits
+Paper w Below Implementation- https://arxiv.org/pdf/1204.0375.pdf
+"""
 
+# Kalman Filters in Python
 import numpy as np
 
 
