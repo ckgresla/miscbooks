@@ -22,3 +22,6 @@ if __name__ == '__main__':
         results = pool.map(task, range(1,50000))
     # report a message
     print(f'Done in {time.monotonic() - st:.2f}s')
+
+
+
