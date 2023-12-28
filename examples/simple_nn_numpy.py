@@ -1,6 +1,7 @@
 """
 A simple implementation of a neural network in numpy
 * ala Dr. Jason Brownlee
+    * https://machinelearningmastery.com/application-of-differentiations-in-neural-networks/
 * it works, kinda, would like a better refactor that is fully my own in the future
 
 """
